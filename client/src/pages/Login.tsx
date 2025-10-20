@@ -6,10 +6,12 @@ import { Input } from "@/components/ui/input";
 import { Card } from "@/components/ui/card";
 import { Mail, Lock, ArrowLeft } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { useAuth } from "@/lib/auth-context";
 
 export default function Login() {
   const [, setLocation] = useLocation();
   const { toast } = useToast();
+  const { login } = useAuth();
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -22,6 +24,7 @@ export default function Login() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     console.log("Login:", formData);
+    login("User", formData.email);
     toast({
       title: "Login Successful!",
       description: "Redirecting to dashboard...",

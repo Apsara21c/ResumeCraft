@@ -6,10 +6,12 @@ import { Input } from "@/components/ui/input";
 import { Card } from "@/components/ui/card";
 import { Mail, Lock, User, ArrowLeft } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { useAuth } from "@/lib/auth-context";
 
 export default function Signup() {
   const [, setLocation] = useLocation();
   const { toast } = useToast();
+  const { login } = useAuth();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -34,6 +36,7 @@ export default function Signup() {
       return;
     }
     console.log("Signup:", formData);
+    login(formData.name, formData.email);
     toast({
       title: "Account Created!",
       description: "Redirecting to dashboard...",

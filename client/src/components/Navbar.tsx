@@ -21,6 +21,7 @@ export default function Navbar() {
   const navLinks = [
     { label: "Home", action: () => scrollToSection("home") },
     { label: "Features", action: () => scrollToSection("features") },
+    { label: "Pricing", action: () => scrollToSection("pricing") },
     { label: "Dashboard", href: "/dashboard" },
     { label: "Contact", action: () => scrollToSection("contact") },
   ];
